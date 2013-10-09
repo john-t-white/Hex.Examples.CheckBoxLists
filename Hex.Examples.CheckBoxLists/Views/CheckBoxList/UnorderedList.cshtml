@@ -1,0 +1,61 @@
+﻿@using Hex.Examples.CheckBoxLists.Models.CheckBoxList
+
+@model UnorderedListViewModel
+
+@{
+	ViewBag.Title = "Unordered List Example";
+}
+
+@section featured
+{
+	<section class="featured">
+		<div class="content-wrapper">
+			<hgroup class="title">
+				<h1>@ViewBag.Title</h1>
+			</hgroup>
+			<p>
+				A list of checkboxes using an unordered list.
+			</p>
+		</div>
+	</section>
+}
+
+<style>
+	ul {
+		list-style-type: none;
+	}
+
+	ul > li {
+		margin: 2px 0;
+	}
+
+	ul > li > input {
+		margin-right: 5px;
+	}
+</style>
+
+@using( Html.BeginForm() )
+{
+    <ul>
+        <li>
+            @Html.CheckBoxListItemFor( x => x.CheckedValues, "One" )
+			@Html.CheckBoxListItemLabelFor( x => x.CheckedValues, "One", "Value One" )
+        </li>
+        <li>
+            @Html.CheckBoxListItemFor( x => x.CheckedValues, "Two" )
+			@Html.CheckBoxListItemLabelFor( x => x.CheckedValues, "Two", "Value Two" )
+        </li>
+		<li>
+            @Html.CheckBoxListItemFor( x => x.CheckedValues, "Three" )
+			@Html.CheckBoxListItemLabelFor( x => x.CheckedValues, "Three", "Value Three" )
+        </li>
+    </ul>
+	
+    <input type="submit" value="Save" />
+}
+
+The following values where submitted:
+@if( this.Model.CheckedValues != null )
+{
+	@( string.Join( ", ", this.Model.CheckedValues ) )
+}

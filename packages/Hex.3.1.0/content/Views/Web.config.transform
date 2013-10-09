@@ -1,0 +1,11 @@
+﻿<configuration>
+    <system.web.webPages.razor>
+        <pages>
+            <namespaces>
+                <add namespace="Hex" />
+                <add namespace="Hex.Ajax" />
+                <add namespace="Hex.Html" />
+            </namespaces>
+        </pages>
+    </system.web.webPages.razor>
+</configuration>

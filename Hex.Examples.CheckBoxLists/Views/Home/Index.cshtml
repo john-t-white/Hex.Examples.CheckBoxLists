@@ -1,0 +1,29 @@
+﻿@{
+	ViewBag.Title = "CheckBoxList Examples";
+}
+@section featured {
+	<section class="featured">
+		<div class="content-wrapper">
+			<hgroup class="title">
+				<h1>@ViewBag.Title</h1>
+			</hgroup>
+			<p>
+				This site contains examples of creating a list of checkboxes using Hex.
+			</p>
+		</div>
+	</section>
+}
+<h3>Here are some examples</h3>
+<ol class="round">
+	<li class="one">
+		<h5>List of checkboxes in an unordered list</h5>
+		This is a basic example of creating a list of checkboxes using an unordered list.<br />
+		@Html.ActionLink( "View Example", "UnorderedList", "CheckBoxList" )
+	</li>
+
+	<li class="two">
+		<h5>List of checkboxes in a table</h5>
+		This is an example of putting a checkbox in a column of a table for selecting the entire row.<br />
+		@Html.ActionLink( "View Example", "Table", "CheckBoxList" )
+	</li>
+</ol>

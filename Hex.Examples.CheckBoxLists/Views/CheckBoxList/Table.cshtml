@@ -1,0 +1,68 @@
+﻿@using Hex.Examples.CheckBoxLists.Models.CheckBoxList
+
+@model TableViewModel
+
+@{
+	ViewBag.Title = "Table Example";
+}
+
+@section featured
+{
+	<section class="featured">
+		<div class="content-wrapper">
+			<hgroup class="title">
+				<h1>@ViewBag.Title</h1>
+			</hgroup>
+			<p>
+				A list of checkboxes using a table.
+			</p>
+		</div>
+	</section>
+}
+
+<style>
+	table {
+		width: 100%;
+	}
+
+	table > thead > tr > th,
+	table > tbody > tr > td {
+		border-bottom: solid 1px gray;
+	}
+</style>
+
+@using( Html.BeginForm() )
+{
+    <table>
+		<thead>
+			<tr>
+				<th></th>
+				<th>First Name</th>
+				<th>Last Name</th>
+			</tr>
+		</thead>
+		<tbody>
+			@foreach( PersonViewModel currentPerson in this.Model.People )
+			{
+				<tr>
+					<td>@Html.CheckBoxListItemFor( x => x.SelectedPersonIds, currentPerson.Id )</td>
+					<td>@currentPerson.FirstName</td>
+					<td>@currentPerson.LastName</td>
+				</tr>
+			}
+		</tbody>
+    </table>
+	
+    <input type="submit" value="Save" />
+}
+
+The following values where submitted:<br />
+@if( this.Model.SelectedPersonIds != null )
+{
+	foreach( int currentSelectedPersonId in this.Model.SelectedPersonIds )
+	{
+		var currentPerson = this.Model.People.Single( x => x.Id == currentSelectedPersonId );
+		@( string.Format( "{0} - {1}, {2}", currentSelectedPersonId, currentPerson.LastName, currentPerson.FirstName ) )
+		<br />
+	}
+}
